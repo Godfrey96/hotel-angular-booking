@@ -1,0 +1,170 @@
+<app-header></app-header>
+
+<div class="container py-3">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header" style="height: 45px;">
+          Your booking details
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>Check-in</small>
+              <p>{{ bookingDetails?.checkIn | date: 'longDate' }}</p>
+            </div>
+            <div class="col-sm-6">
+              <small>Check-out</small>
+              <p>{{ bookingDetails?.checkOut | date: 'longDate' }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">You selected:</small>
+        </div>
+      </div>
+
+      <br>
+      <div class="card">
+        <div class="card-header" style="height: 45px;">
+          Your price summary
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>{{ bookingDetails?.room_name }} hotel room</small>
+            </div>
+            <div class="col-sm-6">
+              <!-- <small>{{ this.price * this.adults | currency: 'ZAR' }}</small> -->
+              <small>{{ bookingDetails?.room_price | currency: 'ZAR' }} * {{ this.adults * 1 + this.children * 1 }}</small>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-sm-6">
+              <small>15% Vat</small>
+            </div>
+            <div class="col-sm-6">
+              <small>{{ (this.adults * this.price + this.children * this.price)*0.15 }}</small>
+            </div>
+          </div> -->
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>Price:</small>
+              <p>(for {{ this.adults * 1 + this.children * 1 }} guests)</p>
+            </div>
+            <div class="col-sm-6">
+              <small>{{ (this.adults * this.room_price + this.children * this.room_price) | currency: 'ZAR' }}</small>
+            </div>
+          </div>
+          <!-- <small class="text-muted">Price:</small> -->
+        </div>
+      </div>
+
+      <br>
+      <div class="card">
+        <div class="card-header" style="height: 45px;">
+          How much will it cost to cancel?
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <small>Your reservation is free of cancellation charges up to 24 hours prior to the arrival date.</small>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-sm-6">
+              <small>From 6:00pm on Jan 15</small>
+            </div>
+            <div class="col-sm-6">
+              <small>ZAR 500.00</small>
+            </div>
+          </div> -->
+        </div>
+        <!-- <div class="card-footer">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>Price:</small>
+            </div>
+            <div class="col-sm-6">
+              <small>ZAR 500.00</small>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+    </div>
+
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <img src="{{ bookingDetails?.room_photo }}" class="card-img-top" alt="">
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <h5>{{ bookingDetails?.room_name }}</h5>
+          <!-- <small style="font-size: 11px;"><b>Free cancellation</b> until 5:59pm on Jan 15</small> -->
+        </div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              Fill in your payment details below
+            </div>
+            <div class="card-body">
+              <form [formGroup]="paymentForm">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Cardholder's name</label>
+                      <input type="text" formControlName="cardHolder" class="form-control">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Card Number</label>
+                      <input type="text" formControlName="cardNumber" class="form-control">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-3 mb-3">
+                      <label class="form-label">Expiration Date</label>
+                      <input type="text" formControlName="expiryDate" placeholder="MM/YYYY" class="form-control" bsDatepicker [minDate]="minMonth" [bsConfig]="datePickerConfig" bsDatepicker [(bsValue)]="bsValue">
+                      <!-- <input type="date" formControlName="expiryDate" class="form-control"> -->
+                    </div>
+                    <div class="col-md-2 mb-3">
+                      <label class="form-label">CVV</label>
+                      <input type="text" formControlName="cvvNumber" class="form-control">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <button class="btn btn-primary" type="submit" (click)="completeBooking()" >Complete Booking</button>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

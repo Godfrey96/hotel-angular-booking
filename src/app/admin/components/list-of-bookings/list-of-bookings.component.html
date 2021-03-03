@@ -1,0 +1,86 @@
+<div id="page-top">
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <app-topbar></app-topbar>
+        <!-- <router-outlet></router-outlet> -->
+
+        <div class="cont">
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+
+            <h1>List of Bookings</h1>
+
+            <table class="table table-striped">
+              <!-- <caption>List of users</caption> -->
+              <!-- *ngFor="let booking of bookingLists" -->
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Firstname</th>
+                  <th scope="col">Lastname</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Mobile</th>
+                  <!-- <th scope="col">No. Rooms</th> -->
+                  <th scope="col">Adult</th>
+                  <th scope="col">Child</th>
+                  <th scope="col">Check-in</th>
+                  <th scope="col">Check-out</th>
+                  <th scope="col">No. of Guests</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">DELETE</th>
+                </tr>
+              </thead>
+              <p *ngIf="bookingLists!.length > 0"></p>
+              <tbody *ngFor="let booking of bookingLists">
+                <tr>
+                  <th scope="row"></th>
+                  <td>{{ booking?.firstName }}</td>
+                  <td>{{ booking?.lastName }}</td>
+                  <td>{{ booking?.email }}</td>
+                  <td>{{ booking?.mobile }}</td>
+                  <!-- <td>{{ booking?.nbrRooms }}</td> -->
+                  <td>{{ booking?.adults }}</td>
+                  <td>{{ booking?.children }}</td>
+                  <td>{{ booking?.checkIn | date: 'dd MMM yyyy' }}</td>
+                  <td>{{ booking?.checkOut | date: 'dd MMM yyyy' }}</td>
+                  <td>{{ booking?.numOfGuests }}</td>
+                  <td>{{ booking?.total | currency: 'R'}}</td>
+                  <td>{{ booking?.status }}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteBooking(booking?.id)">DELETE</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p *ngIf="bookingLists!.length <= 0" style="font-size: 50px; font-weight: 500; text-align: center; margin-top: 50px;">
+              There are no available bookings yet!
+            </p>
+
+          </div>
+          <!-- /.container-fluid -->
+
+
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <app-admin-footer></app-admin-footer>
+
+    </div>
+
+  </div>
+
+</div>
