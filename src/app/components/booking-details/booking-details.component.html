@@ -1,0 +1,96 @@
+<app-header></app-header>
+
+<div class="container py-3">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h5>Thanks {{ paymentDetails?.firstName }} {{ paymentDetails?.lastName }}</h5>
+          <h4>Your booking in ABC Hotel is confirmed</h4>
+          <ul style="margin-left: 20px;">
+            <li>We sent your confirmation email to <a href="#">{{ paymentDetails?.email }}</a></li>
+            <li>Your booking at ABC Hotel is already confirmed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-header">
+          Check Your Details
+        </div>
+        <div class="card-body">
+          <b>ABC Hotel Pty Ltd</b>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">Confirmation Number</div>
+            <div class="col-sm-6">{{ paymentDetails?.refNumber }}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">Booking Details</div>
+            <div class="col-sm-6">{{ paymentDetails?.room_name }}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">You booked for</div>
+            <div class="col-sm-6">
+              <h6 *ngIf="paymentDetails!.adults == 1">{{ paymentDetails?.adults }} adult</h6>
+              <h6 *ngIf="paymentDetails!.adults > 1">{{ paymentDetails?.adults }} adults</h6>
+              <h6 *ngIf="paymentDetails!.children == 1"> {{ paymentDetails?.children }} child</h6>
+              <h6 *ngIf="paymentDetails!.children > 1"> {{ paymentDetails?.children }} children</h6>
+            </div>
+            <!-- <div class="col-sm-6" *ngIf="paymentDetails.adults > 1">{{ paymentDetails?.adults }} adults</div>
+            <div class="col-sm-6" *ngIf="paymentDetails.children == 1">{{ paymentDetails?.children }} child</div>
+            <div class="col-sm-6" *ngIf="paymentDetails.children > 1">{{ paymentDetails?.children }} children</div> -->
+            <!-- <div class="col-sm-6">2 adults</div>
+            <div class="col-sm-6">2 adults</div>
+            <div class="col-sm-6">2 adults</div> -->
+          </div>
+          <div class="row">
+            <div class="col-sm-6">Check-in</div>
+            <div class="col-sm-6">{{ paymentDetails?.checkIn | date: 'fullDate' }}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">Check-out</div>
+            <div class="col-sm-6">{{ paymentDetails?.checkOut | date: 'fullDate' }}</div>
+          </div>
+          <hr>
+
+          <div class="card-body" style="border-radius: 10px solid red; width: 100%; height: 150px;">
+            <div class="row">
+              <div class="col-sm-6">{{ paymentDetails?.room_name }}</div>
+              <div class="col-sm-6">
+                {{ (paymentDetails?.total) - ( paymentDetails?.total * 0.15 ) | currency: 'R' }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">15% VAT</div>
+              <div class="col-sm-6">{{ (paymentDetails?.total * 0.15) | currency: 'R'}}</div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-6">Total Price</div>
+              <div class="col-sm-6">{{ paymentDetails?.total | currency: 'ZAR' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 10px;">
+        <p>
+          <button type="button" class="btn btn-secondary" data-bs-toggle="button" autocomplete="off" (click)="openPdf()">Open Invoice</button>
+        </p>
+        <p>
+          <button type="button" class="btn btn-secondary" data-bs-toggle="button" autocomplete="off" (click)="downloadPdf()">Download Invoice</button>
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      Is everything correct
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

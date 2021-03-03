@@ -1,0 +1,80 @@
+<app-header></app-header>
+
+<section class="w3l-booking-top">
+  <!-- /form-16-section -->
+  <div class="booking-form-61">
+    <div class="container">
+      <div class="booking-top-gds">
+        <div class="booking-forms-16-info align-self">
+          <h5>Your Reservation</h5>
+          <h3 class="title-big">Select the Room, check for availability and book it.</h3>
+          <!-- <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio consectetur
+            adipisicing elit Ea consequuntur illum.</p> -->
+        </div>
+        <div class="form-right-inf">
+          <div class="booking-form-content">
+            <h6>Book Now</h6>
+            <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()" class="book-depature-6 signin-form">
+              <div class="d-grid grid-col-2">
+                <div class="hny-frm_grid">
+                  <h5>First Name</h5>
+                  <input class="name" formControlName="firstName" type="text" placeholder="Your First Name" required="">
+                </div>
+                <div class="hny-frm_grid">
+                  <h5>Last Name</h5>
+                  <input class="name" formControlName="lastName" type="text" placeholder="Your Last Name" required="">
+                </div>
+                <div class="hny-frm_grid">
+                  <h5>Email</h5>
+                  <input class="phone" formControlName="email" type="email" placeholder="Email" required="">
+                </div>
+                <div class="hny-frm_grid">
+                  <h5>Phone Number</h5>
+                  <input class="phone" formControlName="mobile" type="phone" placeholder="Phone Number" required="">
+                </div>
+                <div class="hny-frm_grid">
+                  <h5>Check-in Date</h5>
+                  <input formControlName="checkIn" class="form-control" type="text" placeholder="dd/mm/yyyy" placement="top"
+                     bsDatepicker [minDate]="minDate" [bsConfig]="datePickerConfig">
+                  <!-- <input class="date" formControlName="checkIn" type="date" placeholder="Date" required=""> -->
+                </div>
+                <div class="hny-frm_grid">
+                  <h5>Check-out Date</h5>
+                  <input formControlName="checkOut" class="form-control" type="text" placeholder="dd/mm/yyyy" placement="top"
+                     bsDatepicker [minDate]="minDate" [bsConfig]="datePickerConfig">
+                  <!-- <input class="date" formControlName="checkOut" type="date" placeholder="Date" required=""> -->
+                </div>
+              </div>
+              <div class="d-grid grid-col-2 mt-3">
+                <div class="hny-frm_grid">
+                  <h5>Adults</h5>
+                  <select formControlName="adults" required="">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </div>
+                <div class="hny-frm_grid">
+                  <h5>Children</h5>
+                  <select formControlName="children" required="">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-style btn-secondary book mt-3">Book Now</button>
+              <!-- <p class="already">You are booking as guest.</p> -->
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- //form-16-section -->
+
+<app-footer></app-footer>
