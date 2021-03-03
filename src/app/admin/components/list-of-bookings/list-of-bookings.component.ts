@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 
 import { AdminService } from '../../../services/admin.service';
 import { Booking } from '../../../model/booking';
+import { Payment } from '../../../model/payment';
 
 @Component({
   selector: 'app-list-of-bookings',
@@ -11,13 +12,13 @@ import { Booking } from '../../../model/booking';
 })
 export class ListOfBookingsComponent implements OnInit {
 
-  bookingLists?: Booking[];
+  bookingLists?: Payment[];
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.adminService.getAllBookings().subscribe((data) => {
-      this.bookingLists = data
+      this.bookingLists = data 
       console.log('BOOKING LISTS: ', this.bookingLists)
     })
   }
