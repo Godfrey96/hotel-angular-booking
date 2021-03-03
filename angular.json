@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "hotel-booking-app"
+  "defaultProject": "hotel-booking-app",
+  "cli": {
+    "analytics": false
+  }
 }

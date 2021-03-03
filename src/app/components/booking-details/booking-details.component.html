@@ -38,9 +38,9 @@
             <div class="col-sm-6">You booked for</div>
             <div class="col-sm-6">
               <h6 *ngIf="paymentDetails!.adults == 1">{{ paymentDetails?.adults }} adult</h6>
-              <h6 *ngIf="paymentDetails!.adults > 1">{{ paymentDetails?.adults }} adults</h6>
+              <!-- <h6 *ngIf="paymentDetails!.adults > 1">{{ paymentDetails?.adults }} adults</h6> -->
               <h6 *ngIf="paymentDetails!.children == 1"> {{ paymentDetails?.children }} child</h6>
-              <h6 *ngIf="paymentDetails!.children > 1"> {{ paymentDetails?.children }} children</h6>
+              <!-- <h6 *ngIf="paymentDetails!.children > 1"> {{ paymentDetails?.children }} children</h6> -->
             </div>
             <!-- <div class="col-sm-6" *ngIf="paymentDetails.adults > 1">{{ paymentDetails?.adults }} adults</div>
             <div class="col-sm-6" *ngIf="paymentDetails.children == 1">{{ paymentDetails?.children }} child</div>
